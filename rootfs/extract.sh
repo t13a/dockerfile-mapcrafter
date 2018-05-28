@@ -8,10 +8,6 @@ LAST_BACKUP="${1}"
 
 # TODO Wait for complete if last backup is in process of creation.
 
-echo "Cleaning..." >&2
-rm -rf "${INPUT_DIR}"/*
-echo "Clean completed" >&2
-
 cd "${INPUT_DIR}"
 
 echo "${LAST_BACKUP}: Extracting..." >&2

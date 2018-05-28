@@ -22,6 +22,10 @@ function ensure_user() {
     echo "${USERNAME}"
 }
 
+function has_changes() {
+    [ ! -e "${LAST_EXTRACT}" -o "$(cat "${LAST_EXTRACT}")" != "${1}" ]
+}
+
 function last_backup() {
     ls -1 "${BACKUP_DIR}"/[0-9_.]*.tar.gz 2> /dev/null | tail -n1
 }
@@ -42,8 +46,9 @@ if [ -n "${EXTRACT_LAST_BACKUP:-}" ]
 then
     if LAST_BACKUP="$(last_backup)"
     then
-        if [ ! -e "${LAST_EXTRACT}" -o "${LAST_BACKUP}" != "$(cat "${LAST_EXTRACT}")" ]
+        if has_changes "${LAST_BACKUP}"
         then
+            sudo -u "${PUSER}" -g "${PGROUP}" /clean.sh
             sudo -u "${PUSER}" -g "${PGROUP}" /extract.sh "${LAST_BACKUP}"
         else
             echo "No changes" >&2
