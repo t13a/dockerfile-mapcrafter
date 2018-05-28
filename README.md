@@ -1,16 +1,15 @@
 # Mapcrafter
 
-Dockerfile for [Mapcrafter](https://mapcrafter.org/) a high
-performance Minecraft map renderer.
+Dockerfile for [Mapcrafter](https://mapcrafter.org/) a high performance Minecraft map renderer.
 
 ## Prerequisites
 
 -  Minecraft world data in `/input`
--  or backup archives named with `[0-9_.]*.tar.gz` in `/backup`
+   -  or backup archives named `[0-9_.]*.tar.gz` in `/backup`
 
 ## Usage
 
-Get started with.
+Get started with:
 
     docker \
     run --rm \
@@ -18,19 +17,26 @@ Get started with.
     -v $(pwd)/output:/output \
     t13a/mapcrafter
 
-Use custom configurations and command line options:
+To use your configurations:
 
     docker \
     ...
-    -v $(pwd)/render.conf:/render.conf \
+    -v $(pwd)/render.conf:/etc/mapcrafter/render.conf \
     -v $(pwd)/template:/usr/share/mapcrafter/template \
     -v $(pwd)/texture:/usr/share/mapcrafter/texture \
     ...
+    t13a/mapcrafter
+
+And specify command line options:
+
+    docker \
+    ...
     t13a/mapcrafter \
-    -c /render.conf \
+    -b \
+    -c /etc/mapcrafter/render.conf \
     -j 2
 
-Run in unprivileged user:
+### Run in unprivileged user
 
     docker \
     ...
@@ -39,7 +45,7 @@ Run in unprivileged user:
     ...
     t13a/mapcrafter
 
-Extract input from last backup:
+### Extract input from last backup
 
     docker \
     ...
@@ -48,6 +54,4 @@ Extract input from last backup:
     ...
     t13a/mapcrafter
 
-For use this feature, please note that **all contents of `/input/*`
-will be removed**. If there are no backups or no changes then do
-nothing.
+Note that **all contents of `/input` will be removed**.
