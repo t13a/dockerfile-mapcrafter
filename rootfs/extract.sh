@@ -3,7 +3,8 @@
 set -euo pipefail
 
 INPUT_DIR=/input
-LAST_EXTRACT="${INPUT_DIR}/last-extract"
+OUTPUT_DIR=/output
+LAST_EXTRACT="${OUTPUT_DIR}/.last-extract"
 LAST_BACKUP="${1}"
 
 # TODO Wait for complete if last backup is in process of creation.

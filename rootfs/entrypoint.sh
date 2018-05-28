@@ -37,8 +37,8 @@ PGROUP="$(ensure_group "${PGID}")"
 PUSER="$(ensure_user "${PUID}" "${PGID}")"
 
 BACKUP_DIR=/backup
-INPUT_DIR=/input
-LAST_EXTRACT="${INPUT_DIR}/last-extract"
+OUTPUT_DIR=/output
+LAST_EXTRACT="${OUTPUT_DIR}/.last-extract"
 
 echo "${PUSER} ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/${PUSER}"
 
