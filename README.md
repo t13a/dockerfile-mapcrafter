@@ -32,9 +32,8 @@ And specify command line options:
     docker \
     ...
     t13a/mapcrafter \
-    -b \
-    -c /etc/mapcrafter/render.conf \
-    -j 2
+    mapcrafter_markers \
+    -c /etc/mapcrafter/render.conf
 
 ### Run in unprivileged user
 

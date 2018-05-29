@@ -60,4 +60,4 @@ then
     fi
 fi
 
-exec sudo -u "${PUSER}" -g "${PGROUP}" mapcrafter "${@}"
+exec sudo -u "${PUSER}" -g "${PGROUP}" "${@}"

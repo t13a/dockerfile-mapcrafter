@@ -6,4 +6,4 @@ RUN /install.sh && /configure.sh
 
 ENTRYPOINT [ "/entrypoint.sh" ]
 
-CMD [ "-b", "-c", "/etc/mapcrafter/render.conf" ]
+CMD [ "mapcrafter" "-b", "-c", "/etc/mapcrafter/render.conf" ]
